@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;
+    Transform target;
     public float speed;
 
     void Start(){
-        // target = GameObject.Find("105mm").transform;
+        target = GameObject.Find("105mm").transform;
     }
 
     void LateUpdate(){
-        transform.rotation = Quaternion.Slerp(
+        if(target != null){
+            transform.rotation = Quaternion.Slerp(
             transform.rotation,
             target.rotation,
             Time.deltaTime * speed
         );
+        }
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3711459838848872012}
   - component: {fileID: 3996574456698594198}
   - component: {fileID: -903678919986199195}
+  - component: {fileID: 1368144449370829332}
   m_Layer: 8
   m_Name: enimy1
   m_TagString: Untagged
@@ -70,12 +71,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8f43bec581359344a2d0d4229a9de49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 10
+  health: 100
+  maxHealth: 100
   healthBar: {fileID: 1979565588705506591}
-  breakable: 1
-  destroyed: {fileID: 0}
-  smoke: {fileID: 0}
+  destroyed: {fileID: 3711459838848872015, guid: 544865d49cf46714b837361ea484b352, type: 3}
+  smoke: {fileID: 100002, guid: 2ba9ef067d14f12478dc4de6baf23094, type: 3}
 --- !u!82 &-903678919986199195
 AudioSource:
   m_ObjectHideFlags: 0
@@ -172,6 +172,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &1368144449370829332
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3711459838848872015}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4561992, y: 1.9939144, z: 7.8649406}
+  m_Center: {x: -0.19647145, y: 1.3752998, z: -1.5602131}
 --- !u!1 &4557828496687371237
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,7 +379,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1388485733357891733, guid: d6a50ab8b89ea9147846e244515baeab, type: 3}
 --- !u!54 &3670074722264613921
@@ -481,7 +494,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5549417375118411972, guid: d6a50ab8b89ea9147846e244515baeab, type: 3}
 --- !u!54 &145657324679833958
@@ -596,7 +609,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6424103366036146342, guid: d6a50ab8b89ea9147846e244515baeab, type: 3}
 --- !u!54 &8857054688958648731

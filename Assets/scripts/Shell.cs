@@ -23,6 +23,7 @@ public class Shell : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision col){
+        Debug.Log(col.gameObject.name);
         explosion.Play();
         Life life = col.gameObject.GetComponent<Life>();
         if(life != null){

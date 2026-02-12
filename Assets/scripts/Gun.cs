@@ -43,9 +43,6 @@ public class Gun : MonoBehaviour
 
     void Update(){
         Movement();
-        if(Input.GetKeyDown(KeyCode.Space)){
-            Fire();
-        }
     }
 
     void Movement(){
@@ -59,7 +56,7 @@ public class Gun : MonoBehaviour
 
         breech.localPosition = Vector3.MoveTowards(breech.localPosition, breechDefaultPosition, recoileSpeed * Time.deltaTime);
     }
-    void Fire(){
+    public void Fire(){
         if(!gameManger.playerTurn) return;
         flash.Play();
         breech.localPosition += new Vector3(0, 0, -0.7f);

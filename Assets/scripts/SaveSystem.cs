@@ -1,27 +1,23 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-
-
-
 
 public static class SaveSystem
 {
-    private static string path = Application.persistentDataPath + "/data.x";
-    private static BinaryFormatter formatter = new BinaryFormatter();
-
-    public static void Save(Player gameManger){
-        FileStream stream = new FileStream(path, FileMode.Create);
-        PlayerData playerData = new PlayerData(gameManger);
-        formatter.Serialize(stream, playerData);
-        stream.Close();
+    public static void Save(Player player){
+        string path = Application.persistentDataPath + "/tairifyData.json";
+        string data = JsonUtility.ToJson(player, true);
+        File.WriteAllText(path, data);
+        Debug.Log("Saved at: " + path);
     }
-    public static PlayerData Load(){
+
+    public static Player Load(){
+        string path = Application.persistentDataPath + "/tairifyData.json";
         if(File.Exists(path)){
-            FileStream stream = new FileStream(path, FileMode.Open);
-            PlayerData playerData = formatter.Deserialize(stream) as PlayerData;
-            stream.Close();
-            return playerData;
+            string data = File.ReadAllText(path);
+            Player player = JsonUtility.FromJson<Player>(data);
+            return player;
         }else{
             return null;
         }
