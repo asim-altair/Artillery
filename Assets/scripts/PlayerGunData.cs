@@ -12,4 +12,8 @@ public class PlayerGunData
     public float range;
     public float damage;
     public float areaDamage;
+    public int healthLevel;
+    public int rangeLevel;
+    public int damageLevel;
+    public int areaDamageLevel;
 }

@@ -114,7 +114,6 @@ MonoBehaviour:
   health: 0
   maxHealth: 20
   healthBar: {fileID: 4294114741775473034}
-  breakable: 0
   destroyed: {fileID: 2081646660376132068, guid: 0af2f7dd49b3bd342948d4971b8766a2, type: 3}
   smoke: {fileID: 100000, guid: 0461f0a9cf356c24b805dfbf38e86450, type: 3}
 --- !u!1001 &7129649502826776606

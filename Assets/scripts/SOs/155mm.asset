@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e85c5dbdfc2843449558f50060ead62, type: 3}
+  m_Name: 155mm
+  m_EditorClassIdentifier: 
+  id: 3
+  gunName: 155mm
+  price: 2500
+  health: 100
+  range: 45
+  damage: 25
+  areaDamage: 2
+  locked: 1
+  prefeb: {fileID: 919132149155446097, guid: d6a50ab8b89ea9147846e244515baeab, type: 3}
+  healthIncreament: 0
+  rangeIncreament: 0
+  damageIncreament: 0
+  areaDamageIncreament: 0
+  prices: 0145050081e11e1541eab30241eab302
+  maxHealth: 500
+  maxRange: 100
+  maxDamage: 100
+  maxAreaDamage: 5

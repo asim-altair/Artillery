@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerTarget
   - card
+  - Gun
   layers:
   - Default
   - TransparentFX

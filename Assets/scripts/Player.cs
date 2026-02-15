@@ -7,5 +7,7 @@ public class Player
 {
     public int money;
     public int currentMission;
+    public int selectedGun;
+    public int slots = 3;
     public List<PlayerGunData> guns = new List<PlayerGunData>();
 }

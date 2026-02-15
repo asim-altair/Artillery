@@ -8,7 +8,7 @@ public class CameraFollow : MonoBehaviour
     public float speed;
 
     void Start(){
-        target = GameObject.Find("105mm").transform;
+        // target = GameObject.Find("105mm").transform;
     }
 
     void LateUpdate(){

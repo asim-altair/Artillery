@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    DeflectionInput deflectionInput;
-    ElevationInput elevationInput;
+    JoyStick joystick;
+    float inputX;
+    float inputY;
+    public float defSpeed;
+    public float eleSpeed;
+
+    public float minDef;
+    public float maxDef;
+    public float minEle;
+    public float maxEle;
+
 
     public Transform elevationControler;
     public Transform deflectionWheel;
@@ -29,11 +38,9 @@ public class Gun : MonoBehaviour
     GameManger gameManger;
 
     public ParticleSystem flash;
+
     void Start(){
-        GameObject deflectionWheel = GameObject.Find("Deflection Wheel");
-        GameObject elevationWheel = GameObject.Find("Elevation Wheel");
-        deflectionInput = deflectionWheel.GetComponent<DeflectionInput>();
-        elevationInput = elevationWheel.GetComponent<ElevationInput>();
+        joystick = GameObject.Find("joystick").GetComponent<JoyStick>();
 
         breechDefaultPosition = breech.localPosition;
 
@@ -46,25 +53,34 @@ public class Gun : MonoBehaviour
     }
 
     void Movement(){
-        if(deflectionInput == null && elevationInput == null) return;
-        transform.rotation = Quaternion.Euler(0, -deflectionInput.currRotation, 0);
-        deflectionWheel.localRotation = Quaternion.Euler(0, 0, deflectionInput.currRotation * 35);
-        elevationControler.localRotation = Quaternion.Euler(elevationInput.currRotation, 0, 0);
-        elevationWheel.localRotation = Quaternion.Euler(0, 90, elevationInput.currRotation * 50);
-        tyreLeft.localRotation = Quaternion.Euler(0, 90, -deflectionInput.currRotation * tyreSpeed);
-        tyreRight.localRotation = Quaternion.Euler(0, 90, deflectionInput.currRotation * tyreSpeed);
+        inputX += joystick.inputVector.x * Time.deltaTime * defSpeed;
+        inputY += joystick.inputVector.y * Time.deltaTime * eleSpeed;
+        inputX = Mathf.Clamp(inputX, minDef, maxDef);
+        inputY = Mathf.Clamp(inputY, minEle, maxEle);
+        transform.rotation = Quaternion.Euler(0, -inputX, 0);
+        deflectionWheel.localRotation = Quaternion.Euler(0, 0, inputX * 35);
+        elevationControler.localRotation = Quaternion.Euler(inputY, 0, 0);
+        elevationWheel.localRotation = Quaternion.Euler(0, 90, inputY * 50);
+        tyreLeft.localRotation = Quaternion.Euler(0, 90, -inputX * tyreSpeed);
+        tyreRight.localRotation = Quaternion.Euler(0, 90, inputX * tyreSpeed);
 
         breech.localPosition = Vector3.MoveTowards(breech.localPosition, breechDefaultPosition, recoileSpeed * Time.deltaTime);
     }
-    public void Fire(){
-        if(!gameManger.playerTurn) return;
+    public void Fire(float delay){
+        // if(!gameManger.playerTurn) return;
+        if(!this.enabled)return;
+        StartCoroutine(FireDelay(delay));
+
+        gameManger.playerTurn = false;
+    }
+
+    IEnumerator FireDelay(float delay){
+        yield return new WaitForSeconds(delay);
         flash.Play();
         breech.localPosition += new Vector3(0, 0, -0.7f);
         GameObject projectile = Instantiate(shell, firePoint.position, firePoint.rotation);
         projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward * launchForce;
-
         shot.Play();
-        gameManger.playerTurn = false;
     }
     
 }

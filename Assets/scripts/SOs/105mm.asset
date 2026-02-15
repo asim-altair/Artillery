@@ -20,3 +20,13 @@ MonoBehaviour:
   damage: 15
   areaDamage: 1
   locked: 0
+  prefeb: {fileID: 5265974750816616956, guid: a4a6d39be3fd81e40adaaecad623ec6d, type: 3}
+  healthIncreament: 20
+  rangeIncreament: 5
+  damageIncreament: 5
+  areaDamageIncreament: 5
+  prices: f4010000200300004c04000014050000
+  maxHealth: 500
+  maxRange: 100
+  maxDamage: 100
+  maxAreaDamage: 100
